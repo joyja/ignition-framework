@@ -1,7 +1,7 @@
 {
   "base": {
     "style": {
-      "backgroundColor": "#5E35B1"
+      "backgroundColor": "var(--deep-purple-darken-1)"
     }
   }
 }
