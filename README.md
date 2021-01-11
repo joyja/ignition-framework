@@ -24,4 +24,4 @@ and clone this repository using:
 
 where `{project_name}` is the name you'd like your framework project to have.
 
-Then restart your Igntiion Gateway and the project will be registered by Ignition.
+Then restart your Ignition Gateway and the project will be registered by Ignition.
