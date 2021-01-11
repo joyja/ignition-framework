@@ -1,0 +1,16 @@
+{
+  "scope": "C",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "data.bin"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "joyja",
+      "timestamp": "2021-01-11T17:20:06Z"
+    },
+    "lastModificationSignature": "463f72cb873719835466c57a6c37422b0932b45cc2fde1a40f5fb20187052159"
+  }
+}

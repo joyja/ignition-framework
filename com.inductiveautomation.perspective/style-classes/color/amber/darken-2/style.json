@@ -1,7 +1,7 @@
 {
   "base": {
     "style": {
-      "backgroundColor": "#FFA000"
+      "backgroundColor": "var(--amber-darken-2)"
     }
   }
 }
