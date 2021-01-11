@@ -1,7 +1,7 @@
 {
   "base": {
     "style": {
-      "color": "#bdbdbd"
+      "color": "var(--grey-lighten-1)"
     }
   }
 }

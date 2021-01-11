@@ -1,7 +1,7 @@
 {
   "base": {
     "style": {
-      "color": "#212121"
+      "color": "var(--grey-darken-4)"
     }
   }
 }
