@@ -10,8 +10,6 @@ Click here to see a demo:
 
 The following assumes you've already successfully installed Inductive Ignition with the perspective module. If you need more information on how to do that, visit [Inductive University](https://inductiveuniversity.com). It also assumes you have a basic understanding of git and that you have a working git client.
 
-The project relies on a custom css theme (which contains a single source of truth for colors, etc.) and some google fonts: Oswald, Basic and Lobster.
-
 Navigate to the your ignition projects directory, typically:
 
 - Linux: `/usr/local/bin/ignition/data/projects`
