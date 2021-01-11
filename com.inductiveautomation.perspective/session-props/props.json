@@ -1,6 +1,87 @@
 {
-  "custom": {},
+  "custom": {
+    "framework": {
+      "classes": {
+        "text": {
+          "accent": "blue accent-1",
+          "error": "red accent-2",
+          "info": "blue",
+          "primary": "blue darken-2",
+          "secondary": "grey darken-3",
+          "success": "green",
+          "warning": "amber"
+        }
+      },
+      "selectedSettings": {
+        "accent": "blue accent-1",
+        "background": "blue-grey lighten-2",
+        "error": "red accent-2",
+        "info": "blue",
+        "primary": "blue darken-2",
+        "secondary": "grey darken-3",
+        "success": "green",
+        "warning": "amber"
+      },
+      "selectedTheme": "default",
+      "themes": {
+        "default": {
+          "accent": "blue accent-1",
+          "background": "blue-grey lighten-2",
+          "error": "red accent-2",
+          "info": "blue",
+          "primary": "blue darken-2",
+          "secondary": "grey darken-3",
+          "success": "green",
+          "warning": "amber"
+        },
+        "jar": {
+          "accent": "red",
+          "background": "grey lighten-2",
+          "error": "red accent-2",
+          "info": "blue",
+          "primary": "black",
+          "secondary": "grey darken-3",
+          "success": "green",
+          "warning": "amber"
+        }
+      }
+    }
+  },
   "propConfig": {
+    "custom.framework.classes.background": {
+      "binding": {
+        "config": {
+          "path": "this.custom.framework.selectedSettings"
+        },
+        "transforms": [
+          {
+            "code": "\tresult \u003d {}\n\tfor key in value:\n\t\tresult[key] \u003d theme.getBackgroundClass(value[key])\n\treturn result",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.framework.selectedTheme": {
+      "onChange": {
+        "enabled": false,
+        "script": "\t# create logger to use for debugging\n\tlog \u003d system.util.getLogger(\u0027Theme Selector\u0027)\n\t\n\t# get the theme values and the selected theme\t\n\tthemes \u003d self.custom.framework.themes\n\tselected \u003d currentValue.value\n\t\n\t# determine the selected theme parameters based on the value of selected\n\tselectedParams \u003d themes[selected]\n\t\n\twriteTags \u003d []\n\twriteValues \u003d []\n\t\t\n\t# determine classes\n\tfor key in selectedParams:\n\t\tparam \u003d selectedParams[key]\n\t\tself.custom.framework.variables[key] \u003d theme.getVariable(param)\n\t\n\tfor key in selectedParams:\n\t\tparam \u003d selectedParams[key]\n\t\tself.custom.framework.classes.background[key] \u003d theme.getBackgroundClass(param)\n\t\n\tfor key in selectedParams:\n\t\tself.custom.framework.selectedSettings[key] \u003d selectedParams[key]"
+      }
+    },
+    "custom.framework.variables": {
+      "binding": {
+        "config": {
+          "path": "this.custom.framework.selectedSettings"
+        },
+        "transforms": [
+          {
+            "code": "\tresult \u003d {}\n\tfor key in value:\n\t\tresult[key] \u003d theme.getVariable(value[key])\n\treturn result",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
     "props.auth": {
       "access": "PRIVATE",
       "persistent": false

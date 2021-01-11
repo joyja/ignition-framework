@@ -1,7 +1,8 @@
 {
   "base": {
     "style": {
-      "backgroundColor": "#FF1744"
+      "backgroundColor": "#FF1744",
+      "color": "var(--red-accent-3)"
     }
   }
 }
