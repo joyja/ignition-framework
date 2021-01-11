@@ -1,0 +1,107 @@
+.ia_dropdown {
+    background-color: var(--input);
+    border: var(--containerBorder);
+    border-radius: var(--borderRadiusInput);
+    color: var(--label);
+    font-size: 0.875rem;
+}
+
+.ia_dropdown__placeholder {
+    color: var(--label--disabled);
+}
+
+.ia_dropdown__placeholderIcon {
+    fill: var(--icon);
+}
+
+.ia_dropdown__valuePill__value {
+    color: var(--neutral-80);
+}
+
+.ia_dropdown__valuePill {
+    border-radius: var(--borderRadius);
+    background-color: var(--containerNested);
+    overflow: hidden;
+}
+
+.ia_dropdown__removeValueIcon {
+    fill: currentColor;
+}
+
+.ia_dropdown__search {
+    color: var(--label);
+    font-size: 0.875rem;
+}
+
+.ia_dropdown--active {
+    border-color: var(--callToAction--active);
+}
+
+.ia_dropdown--disabled {
+    color: var(--label--disabled);
+    background-color: var(--input--disabled);
+    cursor: not-allowed;
+}
+
+.ia_dropdown--disabled:focus,
+.ia_dropdown__search:focus {
+    outline: none;
+}
+
+.ia_dropdown--error:not(.ia_dropdown--disabled) {
+    color: var(--error);
+}
+
+.ia_dropdown__optionsModal {
+    background-color: var(--input);
+    border-radius: var(--borderRadiusInput);
+    font-size: 0.875rem;
+}
+
+.ia_dropdown__option {
+    color: var(--label);
+}
+
+/** --selected before --keyboard selected so --keyboard selected can override it */
+.ia_dropdown__option--selected {
+    background-color: var(--callToAction);
+    color: var(--neutral-10)
+}
+
+.ia_dropdown__option:not(.ia_dropdown__option--disabled):not(.ia_dropdown__option--selected):hover,
+.ia_dropdown__option:not(.ia_dropdown__option--disabled):focus,
+.ia_dropdown__option--keyboardSelected
+{
+    background-color: var(--callToActionHighlight);
+    color: var(--label);
+}
+
+.ia_dropdown__option--disabled {
+    color: var(--label--disabled);
+    cursor: not-allowed;
+}
+
+.ia_dropdown__option__noResults {
+   color: var(--input--disabled);
+   pointer-events: none;
+}
+
+.ia_dropdown__clearValueIcon {
+    fill: var(--icon);
+}
+
+.ia_dropdown__clearValueIcon:hover {
+    fill: var(--icon--disabled);
+}
+
+.ia_dropdown__expandIcon {
+    fill: var(--icon);
+}
+
+.ia_dropdown--disabled svg {
+    fill: var(--label--disabled);
+}
+
+.ia_dropdown--disabled .ia_dropdown__valuePill__value {
+    color: var(--label--disabled);
+}
