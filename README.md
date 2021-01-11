@@ -10,18 +10,33 @@ Click here to see a demo:
 
 The following assumes you've already successfully installed Inductive Ignition with the perspective module. If you need more information on how to do that, visit [Inductive University](https://inductiveuniversity.com). It also assumes you have a basic understanding of git and that you have a working git client.
 
-Navigate to the your ignition projects directory. On linux that's typically:
+The project relies on a custom css theme (which contains a single source of truth for colors, etc.) and some google fonts: Oswald, Basic and Lobster.
 
-`/usr/local/bin/ignition/data/projects`
+Navigate to the your ignition projects directory, typically:
 
-and on windows:
+Linux: `/usr/local/bin/ignition/data/projects`
+Windows: `c:\Program Files\Inductive Automation\Ignition\data\projects`
 
-`c:\Program Files\Inductive Automation\Ignition\data\projects`
-
-and clone this repository using:
+Then clone this repository using:
 
 `git clone https://github.com/joyja/ignition-framework.git {project_name}`
 
 where `{project_name}` is the name you'd like your framework project to have.
 
+The project relies on a custom css theme (which contains a single source of truth for colors, etc.) and some google fonts: Oswald, Basic and Lobster. These resources are all contained in the repository,
+ but you'll have to copy them to the appropriate places for Ignition to register them properly.
+
+Move the themes/jar.css and themes/jar folder to the themes directory, typically:
+
+Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/themes`
+Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
+ctive/themes`
+
+Move the fonts/Oswald, fonts/Basic, and fonst/Lobster folders to the fonts directory, typically:
+
+Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/fonts`
+Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
+ctive/fonts`
+
 Then restart your Ignition Gateway and the project will be registered by Ignition.
+
