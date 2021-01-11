@@ -50,6 +50,7 @@
     "device": {},
     "geolocation": {},
     "locale": "en-US",
+    "theme": "jar",
     "timeZoneId": "Etc/UTC"
   }
 }
