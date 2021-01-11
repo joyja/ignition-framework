@@ -14,9 +14,8 @@ The project relies on a custom css theme (which contains a single source of trut
 
 Navigate to the your ignition projects directory, typically:
 
-Linux: `/usr/local/bin/ignition/data/projects`
-
-Windows: `c:\Program Files\Inductive Automation\Ignition\data\projects`
+- Linux: `/usr/local/bin/ignition/data/projects`
+- Windows: `c:\Program Files\Inductive Automation\Ignition\data\projects`
 
 Then clone this repository using:
 
@@ -29,16 +28,14 @@ The project relies on a custom css theme (which contains a single source of trut
 
 Move the themes/jar.css and themes/jar folder to the themes directory, typically:
 
-Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/themes`
-
-Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
+- Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/themes`
+- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
 ctive\themes`
 
 Move the fonts/Oswald, fonts/Basic, and fonst/Lobster folders to the fonts directory, typically:
 
-Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/fonts`
-
-Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
+- Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/fonts`
+- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
 ctive\fonts`
 
 Then restart your Ignition Gateway and the project will be registered by Ignition.
