@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "borderTopLeftRadius": "50%",
+      "borderTopRightRadius": "50%",
+      "borderBottomLeftRadius": "50%",
+      "borderBottomRightRadius": "50%"
+    }
+  }
+}

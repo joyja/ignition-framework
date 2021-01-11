@@ -1,0 +1,7 @@
+{
+  "title": "framework",
+  "description": "Basic themes and re-usable components",
+  "parent": "",
+  "enabled": true,
+  "inheritable": true
+}
