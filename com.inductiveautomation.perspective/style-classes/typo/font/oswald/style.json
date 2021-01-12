@@ -1,0 +1,8 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "oswald",
+      "textTransform": "uppercase"
+    }
+  }
+}
