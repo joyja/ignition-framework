@@ -27,12 +27,12 @@ The project relies on a custom css theme (which contains a single source of trut
 Move the themes/jar.css file and the themes/jar folder to the themes directory, typically located at:
 
 - Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/themes`
-- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepective\themes`
+- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules\com.inductiveautomation.persepective\themes`
 
 Move the fonts/Oswald, fonts/Basic, and fonts/Lobster folders to the fonts directory, typically located at:
 
 - Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/fonts`
-- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepective\fonts`
+- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules\com.inductiveautomation.persepective\fonts`
 
 Then restart your Ignition Gateway and the project will be registered by Ignition.
 
