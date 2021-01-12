@@ -4,13 +4,13 @@
   "restricted": false,
   "overridable": true,
   "files": [
-    "props.json"
+    "style.json"
   ],
   "attributes": {
     "lastModification": {
       "actor": "joyja",
-      "timestamp": "2021-01-12T16:09:24Z"
+      "timestamp": "2021-01-12T16:13:07Z"
     },
-    "lastModificationSignature": "9d6d0ad0355932fd863196d42735b1d08a74c3dd704564cc8cc71463f328ed91"
+    "lastModificationSignature": "e4ff34687a1e9d236d556a2d4e941d0ce2760c2776395285d283dcd845143307"
   }
 }

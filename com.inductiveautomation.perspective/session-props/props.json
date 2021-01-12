@@ -15,8 +15,12 @@
       "selectedTheme": "jar",
       "themes": {
         "default": {
-          "accent": "orange accent-1",
+          "accent": "orange accent-4",
           "background": "blue-grey lighten-4",
+          "equipmentAuto": "white",
+          "equipmentManual": "deep-orange lighten-3",
+          "equipmentOff": "red",
+          "equipmentOn": "cyan",
           "error": "red accent-2",
           "header": "blue-grey darken-4",
           "info": "blue",
@@ -27,13 +31,34 @@
           "warning": "amber"
         },
         "jar": {
-          "accent": "red",
+          "accent": "red darken-1",
           "background": "grey lighten-2",
+          "equipmentAuto": "white",
+          "equipmentManual": "amber lighten-3",
+          "equipmentOff": "transparent",
+          "equipmentOn": "green",
           "error": "red accent-2",
+          "header": "black",
           "info": "blue",
           "link": "red",
           "primary": "black",
           "secondary": "grey darken-3",
+          "success": "green",
+          "warning": "amber"
+        },
+        "pinkle": {
+          "accent": "pink accent-2",
+          "background": "pink lighten-5",
+          "equipmentAuto": "white",
+          "equipmentManual": "purple lighten-3",
+          "equipmentOff": "white",
+          "equipmentOn": "red",
+          "error": "red accent-2",
+          "header": "purple darken-4",
+          "info": "blue",
+          "link": "pink",
+          "primary": "purple",
+          "secondary": "purple darken-4",
           "success": "green",
           "warning": "amber"
         }
