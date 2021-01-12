@@ -12,25 +12,17 @@
           "warning": "amber"
         }
       },
-      "selectedSettings": {
-        "accent": "blue accent-1",
-        "background": "blue-grey lighten-2",
-        "error": "red accent-2",
-        "info": "blue",
-        "primary": "blue darken-2",
-        "secondary": "grey darken-3",
-        "success": "green",
-        "warning": "amber"
-      },
-      "selectedTheme": "default",
+      "selectedTheme": "jar",
       "themes": {
         "default": {
-          "accent": "blue accent-1",
-          "background": "blue-grey lighten-2",
+          "accent": "orange accent-1",
+          "background": "blue-grey lighten-4",
           "error": "red accent-2",
+          "header": "blue-grey darken-4",
           "info": "blue",
+          "link": "blue",
           "primary": "blue darken-2",
-          "secondary": "grey darken-3",
+          "secondary": "blue-grey darken-3",
           "success": "green",
           "warning": "amber"
         },
@@ -39,6 +31,7 @@
           "background": "grey lighten-2",
           "error": "red accent-2",
           "info": "blue",
+          "link": "red",
           "primary": "black",
           "secondary": "grey darken-3",
           "success": "green",
@@ -56,6 +49,34 @@
         "transforms": [
           {
             "code": "\tresult \u003d {}\n\tfor key in value:\n\t\tresult[key] \u003d theme.getBackgroundClass(value[key])\n\treturn result",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.framework.classes.link": {
+      "binding": {
+        "config": {
+          "path": "this.custom.framework.selectedSettings.link"
+        },
+        "transforms": [
+          {
+            "code": "\treturn \u0027color/link/%s\u0027 % (value,)",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.framework.selectedSettings": {
+      "binding": {
+        "config": {
+          "path": "this.custom.framework.selectedTheme"
+        },
+        "transforms": [
+          {
+            "code": "\treturn self.custom.framework.themes[value]",
             "type": "script"
           }
         ],

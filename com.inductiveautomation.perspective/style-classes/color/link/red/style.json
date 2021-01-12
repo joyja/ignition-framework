@@ -1,0 +1,19 @@
+{
+  "base": {
+    "style": {}
+  },
+  "variants": [
+    {
+      "pseudo": "link",
+      "style": {
+        "color": "var(--red-base)"
+      }
+    },
+    {
+      "pseudo": "visited",
+      "style": {
+        "color": "var(--red-darken-4)"
+      }
+    }
+  ]
+}
