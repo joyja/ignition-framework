@@ -24,17 +24,15 @@ where `{project_name}` is the name you'd like your framework project to have.
 The project relies on a custom css theme (which contains a single source of truth for colors, etc.) and some google fonts: Oswald, Basic and Lobster. These resources are all contained in the repository,
  but you'll have to copy them to the appropriate places for Ignition to register them properly.
 
-Move the themes/jar.css and themes/jar folder to the themes directory, typically located at:
+Move the themes/jar.css file and the themes/jar folder to the themes directory, typically located at:
 
 - Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/themes`
-- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
-ctive\themes`
+- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepective\themes`
 
 Move the fonts/Oswald, fonts/Basic, and fonts/Lobster folders to the fonts directory, typically located at:
 
 - Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/fonts`
-- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepe
-ctive\fonts`
+- Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules/com.inductiveautomation.persepective\fonts`
 
 Then restart your Ignition Gateway and the project will be registered by Ignition.
 
