@@ -1,10 +1,16 @@
-# Inductive Automation Ignition Perspective Framework
+# JAR Automation Ignition Perspective Framework
 
 This is JAR Automation's Inheritable Ignition project. It adds contains pre-configured utility classes, components, and theme creation to make getting started with the perspective module even faster than it already is.
 
 Click here to see a demo:
 
 [ignition.jarautomation.io](https://ignition.jarautomation.io "JAR Automation Ignition Demo")
+
+## Supporting the Framework
+
+This framework is MIT-licensed and open source. If you're getting use out of it and you want to see it continue to grow, please consider [funding our open source work on Patreon.](https://www.patreon.com/jarautomation)
+
+You can also help by contributing to the project (a contributing guide is in the works) or submitting issues.
 
 ## Getting Started
 
@@ -35,4 +41,3 @@ Move the fonts/Oswald, fonts/Basic, and fonts/Lobster folders to the fonts direc
 - Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules\com.inductiveautomation.persepective\fonts`
 
 Then restart your Ignition Gateway and the project will be registered by Ignition.
-
