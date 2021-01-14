@@ -1,0 +1,254 @@
+{
+  "custom": {
+    "cssVariable": "var(--black)",
+    "secondaryCssVariable": "var(--grey-lighten-2)"
+  },
+  "params": {
+    "color": "primary",
+    "fontSize": 20,
+    "max": 100,
+    "min": 0,
+    "secondaryColor": "background",
+    "setpoint": 70,
+    "units": "%",
+    "value": 75
+  },
+  "propConfig": {
+    "custom.cssVariable": {
+      "binding": {
+        "config": {
+          "struct": {
+            "color": "{view.params.color}",
+            "selectedTheme": "{session.custom.framework.selectedTheme}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tif value[\u0027color\u0027] in self.session.custom.framework.selectedSettings:\n\t\tvariable \u003d self.session.custom.framework.variables[value[\u0027color\u0027]]\n\t\treturn \u0027var(%s)\u0027 % (variable,)\n\telse:\n\t\treturn \u0027var(%s)\u0027 % (theme.getVariable(value[\u0027color\u0027]),)",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.secondaryCssVariable": {
+      "binding": {
+        "config": {
+          "struct": {
+            "color": "{view.params.secondaryColor}",
+            "selectedTheme": "{session.custom.framework.selectedTheme}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tif value[\u0027color\u0027] in self.session.custom.framework.selectedSettings:\n\t\tvariable \u003d self.session.custom.framework.variables[value[\u0027color\u0027]]\n\t\treturn \u0027var(%s)\u0027 % (variable,)\n\telse:\n\t\treturn \u0027var(%s)\u0027 % (theme.getVariable(value[\u0027color\u0027]),)",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.fontSize": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.max": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.min": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.secondaryColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.setpoint": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.units": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 100,
+      "width": 100
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "gauge"
+        },
+        "position": {
+          "height": "100%",
+          "width": "100%"
+        },
+        "propConfig": {
+          "props.elements[0].elements[0].stroke.paint": {
+            "binding": {
+              "config": {
+                "path": "view.custom.secondaryCssVariable"
+              },
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[1].stroke.dashoffset": {
+            "binding": {
+              "config": {
+                "expression": "(1 - ({view.params.value} - {view.params.min})/({view.params.max} - {view.params.min})) * {this.props.elements[0].elements[1].stroke.dasharray}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.elements[0].elements[1].stroke.paint": {
+            "binding": {
+              "config": {
+                "path": "view.custom.cssVariable"
+              },
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[2].elements[0].fill": {
+            "binding": {
+              "config": {
+                "path": "view.custom.cssVariable"
+              },
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[2].style.transform": {
+            "binding": {
+              "config": {
+                "expression": "\u0027rotate(\u0027 + \ntoStr(360 * ({view.params.setpoint} - {view.params.min})/({view.params.max} - {view.params.min})) \n+ \u0027deg)\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "cx": "45.714285714285715",
+                  "cy": "45.714285714285715",
+                  "fill": {
+                    "paint": "transparent"
+                  },
+                  "name": "circle",
+                  "r": 20,
+                  "stroke": {
+                    "dasharray": 125.664,
+                    "dashoffset": 0,
+                    "width": 5.7143
+                  },
+                  "type": "circle"
+                },
+                {
+                  "cx": "45.714285714285715",
+                  "cy": "45.714285714285715",
+                  "name": "circle",
+                  "r": 20,
+                  "stroke": {
+                    "dasharray": 125.664,
+                    "width": 5.7143
+                  },
+                  "style": {
+                    "transition": "all 0.6s ease-in-out"
+                  },
+                  "type": "circle"
+                },
+                {
+                  "elements": [
+                    {
+                      "d": "M 45.714 28.59 L 47.214 31.59 L 44.214 31.59 L 45.714 28.59 Z",
+                      "transform": "matrix(0, 1, -1, 0, 91.389999, 0.000285)",
+                      "type": "path"
+                    }
+                  ],
+                  "style": {
+                    "transformOrigin": "45.714285714285715px 45.714285714285715px",
+                    "transition": "all .6s ease-in-out"
+                  },
+                  "type": "group"
+                }
+              ],
+              "fill": {
+                "paint": "none"
+              },
+              "name": "group",
+              "transform": "transform: rotate(0deg)",
+              "type": "group"
+            }
+          ],
+          "viewBox": "22.86 22.86 45.714 45.714"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": "100%",
+          "width": "100%"
+        },
+        "propConfig": {
+          "props.style.color": {
+            "binding": {
+              "config": {
+                "path": "view.custom.cssVariable"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.fontSize": {
+            "binding": {
+              "config": {
+                "path": "view.params.fontSize"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "numberFormat({view.params.value},\"#,##0.#\") + \u0027 \u0027 + {view.params.units}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "typo/font/oswald",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

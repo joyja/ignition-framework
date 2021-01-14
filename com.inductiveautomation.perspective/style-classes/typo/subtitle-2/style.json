@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "Oswald",
+      "fontSize": "0.875rem",
+      "fontWeight": "500",
+      "letterSpacing": ".0071428571em"
+    }
+  }
+}

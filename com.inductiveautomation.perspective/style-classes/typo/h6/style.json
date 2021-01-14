@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "Oswald",
+      "fontSize": "1.25rem",
+      "fontWeight": "600",
+      "textTransform": "uppercase"
+    }
+  }
+}
