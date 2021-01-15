@@ -1,3 +1,33 @@
+def isValidParam(param):
+	validColors = [
+		'amber',
+		'blue',
+		'blue-gray',
+		'brown',
+		'cyan',
+		'deep-orange',
+		'deep-purple',
+		'green',
+		'grey',
+		'indigo',
+		'light-blue',
+		'light-green',
+		'lime',
+		'orange',
+		'pink',
+		'purple',
+		'red',
+		'teal',
+		'yellow',
+		'black',
+		'white',
+		'transparent',
+	]
+	paramParts = param.split()
+	color = paramParts[0]
+	return color in validColors
+	
+
 def getBackgroundClass(param):
 	paramParts = param.split()
 	color = paramParts[0]
