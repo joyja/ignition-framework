@@ -1,0 +1,17 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "unset",
+      "borderBottomColor": "black",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "3px",
+      "borderLeftStyle": "none",
+      "borderTopLeftRadius": "unset",
+      "borderTopRightRadius": "unset",
+      "borderBottomLeftRadius": "unset",
+      "borderBottomRightRadius": "unset",
+      "borderRightStyle": "none",
+      "borderTopStyle": "none"
+    }
+  }
+}

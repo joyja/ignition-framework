@@ -1,0 +1,34 @@
+{
+  "base": {
+    "animation": {
+      "duration": "600ms",
+      "direction": "normal",
+      "iterationCount": "1",
+      "timingFunction": "cubic-bezier(.25,.8,.5,1)",
+      "fillMode": "none",
+      "keyframes": {
+        "0%": {
+          "marginLeft": "0px"
+        },
+        "59%": {
+          "marginLeft": "0px"
+        },
+        "60%": {
+          "marginLeft": "2px"
+        },
+        "70%": {
+          "marginLeft": "-2px"
+        },
+        "80%": {
+          "marginLeft": "2px"
+        },
+        "90%": {
+          "marginLeft": "-2px"
+        },
+        "100%": {
+          "marginLeft": "0px"
+        }
+      }
+    }
+  }
+}

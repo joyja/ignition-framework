@@ -1,0 +1,436 @@
+{
+  "custom": {},
+  "params": {
+    "color": "primary",
+    "invalid": false,
+    "invalidMessage": "There was a bad error.",
+    "label": "Label",
+    "units": "",
+    "value": 50
+  },
+  "propConfig": {
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.invalid": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.invalidMessage": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.units": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 73,
+      "width": 767
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_label"
+        },
+        "position": {
+          "basis": "20px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.invalid"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "components/form/input/label/shake typo/font/basic"
+                    },
+                    {
+                      "input": false,
+                      "output": "typo/font/basic"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.color": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "{view.params.color}",
+                  "invalid": "{view.params.invalid}",
+                  "themeVariables": "{session.custom.framework.variables}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\terrorVar \u003d value.themeVariables.error\n\tif value.color in value.themeVariables:\n\t\tcolorVar \u003d value.themeVariables[value.color]\n\telse:\n\t\tcolorVar \u003d theme.getVariable(value.color)\n\tif value.invalid:\n\t\treturn \u0027var(%s)\u0027 % (errorVar,)\n\telse:\n\t\treturn \u0027var(%s)\u0027 % (colorVar,)",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.style.transform": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "focused": "{../FlexContainer/NumericEntryField.custom.focused}",
+                  "value": "{../FlexContainer/NumericEntryField.props.value}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027scale(0.75)\u0027 if (value[\u0027value\u0027] or value[\u0027value\u0027] \u003d\u003d 0) or value[\u0027focused\u0027] else \u0027translateY(22px)\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.label"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "transformOrigin": "top left",
+            "transition": "all .3s cubic-bezier(.25,.8,.5,1)"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "custom": {
+              "focused": true
+            },
+            "events": {
+              "dom": {
+                "onBlur": {
+                  "config": {
+                    "script": "\tself.custom.focused \u003d False"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                },
+                "onFocus": {
+                  "config": {
+                    "script": "\tself.custom.focused \u003d True"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "NumericEntryField"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.borderBottomColor": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "color": "{view.params.color}",
+                      "invalid": "{view.params.invalid}",
+                      "themeVariables": "{session.custom.framework.variables}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\terrorVar \u003d value.themeVariables.error\n\tif value.color in value.themeVariables:\n\t\tcolorVar \u003d value.themeVariables[value.color]\n\telse:\n\t\tcolorVar \u003d theme.getVariable(value.color)\n\tif value.invalid:\n\t\treturn \u0027var(%s)\u0027 % (errorVar,)\n\telse:\n\t\treturn \u0027var(%s)\u0027 % (colorVar,)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "color": "{view.params.color}",
+                      "invalid": "{view.params.invalid}",
+                      "themeVariables": "{session.custom.framework.variables}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\terrorVar \u003d value.themeVariables.error\n\tif value.color in value.themeVariables:\n\t\tcolorVar \u003d value.themeVariables[value.color]\n\telse:\n\t\tcolorVar \u003d theme.getVariable(value.color)\n\tif value.invalid:\n\t\treturn \u0027var(%s)\u0027 % (errorVar,)\n\telse:\n\t\treturn \u0027var(%s)\u0027 % (colorVar,)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.value"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "align": "left",
+              "format": "none",
+              "style": {
+                "classes": "components/form/input/base",
+                "zIndex": 1
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.units"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn bool(value) or value \u003d\u003d 0",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.style.borderBottomColor": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "color": "{view.params.color}",
+                      "invalid": "{view.params.invalid}",
+                      "themeVariables": "{session.custom.framework.variables}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\terrorVar \u003d value.themeVariables.error\n\tif value.color in value.themeVariables:\n\t\tcolorVar \u003d value.themeVariables[value.color]\n\telse:\n\t\tcolorVar \u003d theme.getVariable(value.color)\n\tif value.invalid:\n\t\treturn \u0027var(%s)\u0027 % (errorVar,)\n\telse:\n\t\treturn \u0027var(%s)\u0027 % (colorVar,)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "color": "{view.params.color}",
+                      "invalid": "{view.params.invalid}",
+                      "themeVariables": "{session.custom.framework.variables}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\terrorVar \u003d value.themeVariables.error\n\tif value.color in value.themeVariables:\n\t\tcolorVar \u003d value.themeVariables[value.color]\n\telse:\n\t\tcolorVar \u003d theme.getVariable(value.color)\n\tif value.invalid:\n\t\treturn \u0027var(%s)\u0027 % (errorVar,)\n\telse:\n\t\treturn \u0027var(%s)\u0027 % (colorVar,)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.units"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "components/form/input/base",
+                "textAlign": "right"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "32px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Markdown"
+        },
+        "position": {
+          "basis": "20px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.source": {
+            "binding": {
+              "config": {
+                "expression": "\u0027\u003chtml\u003e\u003cdiv class\u003d\"psc-typo/truncate\"\u003e\u0027 + \n{view.params.invalidMessage}\n+ \u0027\u003c/div\u003e\u003c/html\u003e\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.style.opacity": {
+            "binding": {
+              "config": {
+                "path": "view.params.invalid"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": 100
+                    },
+                    {
+                      "input": false,
+                      "output": 0
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.transform": {
+            "binding": {
+              "config": {
+                "path": "view.params.invalid"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "none"
+                    },
+                    {
+                      "input": false,
+                      "output": "translateY(-18px)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.transition": {
+            "binding": {
+              "config": {
+                "path": "view.params.invalid"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "opacity .3s,transform .2s ease-out"
+                    },
+                    {
+                      "input": false,
+                      "output": "opacity .3s,transform .3s ease-in"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "markdown": {
+            "escapeHtml": false
+          },
+          "style": {
+            "classes": "typo/font/basic typo/truncate",
+            "color": "#F44336",
+            "fontSize": "12px"
+          }
+        },
+        "type": "ia.display.markdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}
