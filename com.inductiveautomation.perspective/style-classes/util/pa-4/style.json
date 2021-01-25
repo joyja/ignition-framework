@@ -1,10 +1,10 @@
 {
   "base": {
     "style": {
-      "paddingBottom": "48px",
-      "paddingLeft": "48px",
-      "paddingRight": "48px",
-      "paddingTop": "48px"
+      "paddingBottom": "16px",
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "paddingTop": "16px"
     }
   }
 }

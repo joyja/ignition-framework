@@ -26,7 +26,18 @@ def isValidParam(param):
 	paramParts = param.split()
 	color = paramParts[0]
 	return color in validColors
-	
+
+def isValidRounded(param):
+	validRounded = [
+		'circle',
+		'pill',
+		'none',
+		'sm',
+		'md',
+		'lg',
+		'xl',
+	]
+	return param in validRounded
 
 def getBackgroundClass(param):
 	paramParts = param.split()

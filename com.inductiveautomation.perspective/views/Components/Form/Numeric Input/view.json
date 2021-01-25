@@ -1,7 +1,7 @@
 {
   "custom": {},
   "params": {
-    "color": "primary",
+    "color": "rgba(144,234,45,255)",
     "invalid": false,
     "invalidMessage": "There was a bad error.",
     "label": "Label",
