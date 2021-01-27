@@ -1,0 +1,15 @@
+{
+  "base": {
+    "style": {
+      "borderStyle": "hidden",
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderBottomLeftRadius": "5px",
+      "borderBottomRightRadius": "5px",
+      "color": "white",
+      "fontFamily": "Oswald",
+      "fontWeight": "normal",
+      "textTransform": "uppercase"
+    }
+  }
+}

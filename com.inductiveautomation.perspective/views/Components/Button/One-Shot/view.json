@@ -1,0 +1,168 @@
+{
+  "custom": {},
+  "params": {
+    "color": "primary",
+    "disabled": false,
+    "label": "One-Shot Button",
+    "labelWriting": "Writing...",
+    "tagPath": "[default]VFDA/startReq"
+  },
+  "propConfig": {
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.disabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.labelWriting": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 52,
+      "width": 240
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "OneShotButton"
+        },
+        "position": {
+          "basis": "34px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.disabled"
+              },
+              "transforms": [
+                {
+                  "expression": "!{value}",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.readyState.style.classes": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "{view.params.color}",
+                  "disabled": "!{this.props.enabled}",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tif value[\u0027disabled\u0027]:\n\t\tstyleClass \u003d \u0027components/button/disabled typo/font/oswald\u0027\n\telse:\n\t\tstyleClass\u003d \u0027copmonents/button/base typo/font/oswald \u0027\n\t\tif value[\u0027color\u0027] in [\u0027primary\u0027,\u0027secondary\u0027,\u0027accent\u0027,\u0027success\u0027,\u0027error\u0027,\u0027info\u0027,\u0027warning\u0027]:\n\t\t\tstyleClass +\u003d self.session.custom.framework.classes.background[value[\u0027color\u0027]]\n\t\telse:\n\t\t\tstyleClass +\u003d theme.getBackgroundClass(value[\u0027color\u0027])\n\treturn styleClass",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.readyState.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.label"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tagPath": "{view.params.tagPath}"
+                },
+                "tagPath": "{tagPath}"
+              },
+              "overlayOptOut": true,
+              "type": "tag"
+            }
+          },
+          "props.writingState.style.classes": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "{view.params.color}",
+                  "disabled": "!{this.props.enabled}",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tif value[\u0027disabled\u0027]:\n\t\tstyleClass \u003d \u0027components/button/disabled typo/font/oswald\u0027\n\telse:\n\t\tstyleClass\u003d \u0027copmonents/button/base typo/font/oswald \u0027\n\t\tif value[\u0027color\u0027] in [\u0027primary\u0027,\u0027secondary\u0027,\u0027accent\u0027,\u0027success\u0027,\u0027error\u0027,\u0027info\u0027,\u0027warning\u0027]:\n\t\t\tstyleClass +\u003d self.session.custom.framework.classes.background[value[\u0027color\u0027]]\n\t\telse:\n\t\t\tstyleClass +\u003d theme.getBackgroundClass(value[\u0027color\u0027])\n\treturn styleClass",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.writingState.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.labelWriting"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "readyState": {
+            "icon": {
+              "style": {
+                "height": "24px",
+                "width": "2rem"
+              }
+            },
+            "style": {}
+          },
+          "writingState": {
+            "icon": {
+              "path": "material/hourglass_empty",
+              "style": {
+                "height": "24px",
+                "width": "2rem"
+              }
+            },
+            "style": {}
+          }
+        },
+        "type": "ia.input.oneshotbutton"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

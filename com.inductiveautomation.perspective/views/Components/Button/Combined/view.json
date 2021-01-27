@@ -1,0 +1,135 @@
+{
+  "custom": {},
+  "params": {
+    "color": "primary",
+    "disabled": true,
+    "label": "Button",
+    "labelWriting": "Writing...",
+    "one-shot": true,
+    "tagPath": "[default]VFDA/autoReq"
+  },
+  "propConfig": {
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.disabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.labelWriting": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.one-shot": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 52,
+      "width": 250
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.color"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.disabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.disabled"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.label": {
+            "binding": {
+              "config": {
+                "path": "view.params.label"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.labelWriting": {
+            "binding": {
+              "config": {
+                "path": "view.params.labelWriting"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.tagPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.tagPath"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.one-shot"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "Components/Button/One-Shot"
+                    },
+                    {
+                      "input": false,
+                      "output": "Components/Buttons/Basic"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

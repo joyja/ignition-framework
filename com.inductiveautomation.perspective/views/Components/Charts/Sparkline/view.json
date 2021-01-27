@@ -1,0 +1,410 @@
+{
+  "custom": {},
+  "params": {
+    "color": "primary",
+    "discrete": true,
+    "discreteOffLabel": "Off",
+    "discreteOnLabel": "On",
+    "duration": 10,
+    "label": "Speed",
+    "max": 1,
+    "min": 0,
+    "rounded": "pill",
+    "secondaryColor": "background",
+    "tags": [
+      {
+        "aggregate": "MinMax",
+        "alias": "on",
+        "path": "[default]TestRandomBoolean"
+      }
+    ]
+  },
+  "propConfig": {
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.discrete": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.discreteOffLabel": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.discreteOnLabel": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.duration": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.max": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.min": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.rounded": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.secondaryColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tags": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 67,
+      "width": 385
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.discreteOnLabel"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontFamily": "Oswald",
+                    "fontSize": "10px",
+                    "textAlign": "right",
+                    "textTransform": "uppercase"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label_0"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.discreteOffLabel"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontFamily": "Oswald",
+                    "fontSize": "10px",
+                    "textAlign": "right",
+                    "textTransform": "uppercase"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.discrete"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.label"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontFamily": "Oswald",
+                    "fontSize": "10px",
+                    "textAlign": "right",
+                    "textTransform": "uppercase"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_1"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.discrete"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "!{value}",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Sparkline"
+                },
+                "position": {
+                  "basis": "250px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "custom.tags": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.tags"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.color": {
+                    "binding": {
+                      "config": {
+                        "struct": {
+                          "color": "{view.params.color}",
+                          "selectedTheme": "{session.custom.framework.selectedTheme}"
+                        },
+                        "waitOnAll": true
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tif value[\u0027color\u0027] in self.session.custom.framework.selectedSettings:\n\t\tvariable \u003d self.session.custom.framework.variables[value[\u0027color\u0027]]\n\t\treturn \u0027var(%s)\u0027 % (variable,)\n\telse:\n\t\tif theme.isValidParam(value[\u0027color\u0027]):\n\t\t\treturn \u0027var(%s)\u0027 % (theme.getVariable(value[\u0027color\u0027]),)\n\t\telse:\n\t\t\treturn value[\u0027color\u0027]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr-struct"
+                    }
+                  },
+                  "props.points": {
+                    "binding": {
+                      "config": {
+                        "aggregate": "LastValue",
+                        "avoidScanClassValidation": true,
+                        "dateRange": {
+                          "mostRecent": "{view.params.duration}",
+                          "mostRecentUnits": "MIN"
+                        },
+                        "ignoreBadQuality": false,
+                        "polling": {
+                          "enabled": true,
+                          "rate": "2.5"
+                        },
+                        "preventInterpolation": false,
+                        "returnFormat": "Wide",
+                        "returnSize": {
+                          "numRows": "240",
+                          "type": "FIXED"
+                        },
+                        "tags": "{this.custom.tags}",
+                        "valueFormat": "DATASET"
+                      },
+                      "type": "tag-history"
+                    }
+                  },
+                  "props.range.high": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.max"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.range.low": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.min"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "marker": {
+                    "first": {
+                      "size": 0
+                    },
+                    "high": {
+                      "size": 0
+                    },
+                    "last": {
+                      "size": 0
+                    },
+                    "low": {
+                      "size": 0
+                    }
+                  },
+                  "range": {},
+                  "style": {
+                    "classes": "util/pa-2"
+                  },
+                  "width": 3
+                },
+                "type": "ia.display.sparkline"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.duration"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value} \u003c 60, {value} + \u0027m\u0027,\nif({value} \u003c 1440, {value} / 60 + \u0027h\u0027,\n{value} / 60 / 24 + \u0027d\u0027))",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "util/pr-3",
+                "fontFamily": "Basic",
+                "fontSize": 16
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "35px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "rounded": "{view.params.rounded}",
+                  "secondaryColor": "{view.params.secondaryColor}",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tclasses \u003d \u0027\u0027\n\tif value[\u0027secondaryColor\u0027] in self.session.custom.framework.selectedSettings:\n\t\tclasses +\u003d self.session.custom.framework.classes.background[value[\u0027secondaryColor\u0027]]\n\telse:\n\t\tif theme.isValidParam(value[\u0027secondaryColor\u0027]):\n\t\t\tclasses +\u003d theme.getBackgroundClass(value[\u0027secondaryColor\u0027])\n\tif classes !\u003d \u0027\u0027:\n\t\tclasses +\u003d \u0027 \u0027\n\tif value[\u0027rounded\u0027] and theme.isValidRounded(value[\u0027rounded\u0027]):\n\t\tclasses +\u003d \u0027rounded/%s\u0027 % (value[\u0027rounded\u0027],)\n\treturn classes",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

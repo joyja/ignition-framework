@@ -5,13 +5,17 @@
   },
   "params": {
     "color": "primary",
+    "endDeg": 315,
     "fontSize": 20,
+    "gap": 0,
     "max": 100,
     "min": 0,
+    "rotate": 0,
     "secondaryColor": "background",
-    "setpoint": 70,
+    "setpoint": 50,
+    "startDeg": 45,
     "units": "%",
-    "value": 75
+    "value": 70
   },
   "propConfig": {
     "custom.cssVariable": {
@@ -56,7 +60,15 @@
       "paramDirection": "input",
       "persistent": true
     },
+    "params.endDeg": {
+      "paramDirection": "input",
+      "persistent": true
+    },
     "params.fontSize": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.gap": {
       "paramDirection": "input",
       "persistent": true
     },
@@ -68,11 +80,19 @@
       "paramDirection": "input",
       "persistent": true
     },
+    "params.rotate": {
+      "paramDirection": "input",
+      "persistent": true
+    },
     "params.secondaryColor": {
       "paramDirection": "input",
       "persistent": true
     },
     "params.setpoint": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.startDeg": {
       "paramDirection": "input",
       "persistent": true
     },
@@ -94,6 +114,9 @@
   "root": {
     "children": [
       {
+        "custom": {
+          "circumference": 125.664
+        },
         "meta": {
           "name": "gauge"
         },
@@ -102,6 +125,44 @@
           "width": "100%"
         },
         "propConfig": {
+          "custom.endDeg": {
+            "binding": {
+              "config": {
+                "path": "view.params.gap"
+              },
+              "transforms": [
+                {
+                  "expression": "360-{value}",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "custom.startDeg": {
+            "binding": {
+              "config": {
+                "path": "view.params.gap"
+              },
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[0].stroke.dasharray": {
+            "binding": {
+              "config": {
+                "expression": "((({this.custom.endDeg} - {this.custom.startDeg}))/360)*{this.custom.circumference}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.elements[0].elements[0].stroke.dashoffset": {
+            "binding": {
+              "config": {
+                "expression": "-1 * ({this.custom.startDeg} / 360) * {this.custom.circumference}"
+              },
+              "type": "expr"
+            }
+          },
           "props.elements[0].elements[0].stroke.paint": {
             "binding": {
               "config": {
@@ -110,10 +171,38 @@
               "type": "property"
             }
           },
+          "props.elements[0].elements[0].style.transform": {
+            "binding": {
+              "config": {
+                "path": "view.params.rotate"
+              },
+              "transforms": [
+                {
+                  "expression": "\u0027rotate(\u0027+{value}+\u0027deg)\u0027",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[1].stroke.dasharray": {
+            "binding": {
+              "config": {
+                "expression": "((({view.params.value} - {view.params.min})/({view.params.max} - {view.params.min}) \n* ({this.custom.endDeg} - {this.custom.startDeg}))/360)*{this.custom.circumference}"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} + \u0027 \u0027 + {this.custom.circumference}",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr"
+            }
+          },
           "props.elements[0].elements[1].stroke.dashoffset": {
             "binding": {
               "config": {
-                "expression": "(1 - ({view.params.value} - {view.params.min})/({view.params.max} - {view.params.min})) * {this.props.elements[0].elements[1].stroke.dasharray}"
+                "expression": "-1 * ({this.custom.startDeg} / 360) * {this.custom.circumference}"
               },
               "type": "expr"
             }
@@ -123,6 +212,20 @@
               "config": {
                 "path": "view.custom.cssVariable"
               },
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[1].style.transform": {
+            "binding": {
+              "config": {
+                "path": "view.params.rotate"
+              },
+              "transforms": [
+                {
+                  "expression": "\u0027rotate(\u0027+{value}+\u0027deg)\u0027",
+                  "type": "expression"
+                }
+              ],
               "type": "property"
             }
           },
@@ -137,8 +240,18 @@
           "props.elements[0].elements[2].style.transform": {
             "binding": {
               "config": {
-                "expression": "\u0027rotate(\u0027 + \ntoStr(360 * ({view.params.setpoint} - {view.params.min})/({view.params.max} - {view.params.min})) \n+ \u0027deg)\u0027"
+                "expression": "({view.params.setpoint} - {view.params.min})\n/({view.params.max} - {view.params.min})"
               },
+              "transforms": [
+                {
+                  "expression": "{view.params.rotate} + {this.custom.startDeg} + {value} * ({this.custom.endDeg} - {this.custom.startDeg})",
+                  "type": "expression"
+                },
+                {
+                  "expression": "\u0027rotate(\u0027 + \ntoStr({value})\n+ \u0027deg)\u0027",
+                  "type": "expression"
+                }
+              ],
               "type": "expr"
             }
           }
@@ -156,9 +269,11 @@
                   "name": "circle",
                   "r": 20,
                   "stroke": {
-                    "dasharray": 125.664,
-                    "dashoffset": 0,
                     "width": 5.7143
+                  },
+                  "style": {
+                    "transformOrigin": "45.714px 45.714px",
+                    "transition": "all 0.6s ease-in-out"
                   },
                   "type": "circle"
                 },
@@ -168,10 +283,10 @@
                   "name": "circle",
                   "r": 20,
                   "stroke": {
-                    "dasharray": 125.664,
                     "width": 5.7143
                   },
                   "style": {
+                    "transformOrigin": "45.714px 45.714px",
                     "transition": "all 0.6s ease-in-out"
                   },
                   "type": "circle"
