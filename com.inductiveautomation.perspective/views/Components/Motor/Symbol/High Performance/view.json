@@ -1,0 +1,214 @@
+{
+  "custom": {},
+  "params": {
+    "on": false
+  },
+  "propConfig": {
+    "params.on": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "dropConfig": {
+      "udts": [
+        {
+          "action": "bind",
+          "param": "instance",
+          "type": "Motor"
+        }
+      ]
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "motor"
+        },
+        "position": {
+          "basis": "20px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.elements[0].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": "red",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "white"
+                    },
+                    {
+                      "input": false,
+                      "output": "silver"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].stroke.paint": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": "red",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "black"
+                    },
+                    {
+                      "input": false,
+                      "output": "grey"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": "red",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "black"
+                    },
+                    {
+                      "input": false,
+                      "output": "grey"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].text": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": "?",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "ON"
+                    },
+                    {
+                      "input": false,
+                      "output": "OFF"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.transform": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "rotate(360deg)"
+                    },
+                    {
+                      "input": false,
+                      "output": "rotate(0deg)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "d": "M 35.198 1 L 77.238 1 L 77.238 31.83 L 72.348 31.83 C 72.577 33.47 72.696 35.145 72.696 36.848 C 72.696 56.646 56.646 72.696 36.848 72.696 C 17.05 72.696 1 56.646 1 36.848 C 1 17.603 16.166 1.9 35.198 1.037 Z",
+              "fill": {},
+              "name": "path",
+              "stroke": {
+                "width": " 2px"
+              },
+              "style": {
+                "transition": "stroke,fill .5s ease-in-out"
+              },
+              "type": "path"
+            },
+            {
+              "fill": {},
+              "name": "text",
+              "style": {
+                "fontFamily": "Oswald",
+                "fontSize": " 24px",
+                "fontWeight": " 700",
+                "textAnchor": " middle",
+                "transition": "fill .5s linear",
+                "whiteSpace": " pre"
+              },
+              "type": "text",
+              "x": 36.86,
+              "y": "45.277"
+            }
+          ],
+          "style": {
+            "transition": "transform .25s ease-out"
+          },
+          "viewBox": "0 0 78.2 73.7"
+        },
+        "type": "ia.shapes.svg"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

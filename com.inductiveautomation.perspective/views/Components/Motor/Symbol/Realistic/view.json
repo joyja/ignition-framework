@@ -1,0 +1,394 @@
+{
+  "custom": {},
+  "params": {
+    "colorOff": "equipmentOff",
+    "colorOn": "equipmentOn",
+    "on": true,
+    "tagPath": "[default]MotorA"
+  },
+  "propConfig": {
+    "params.colorOff": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.colorOn": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.on": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "pump"
+        },
+        "position": {
+          "basis": "197px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.elements[0].elements[2].style.opacity": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": 0
+                    },
+                    {
+                      "input": false,
+                      "output": 1
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[2].style.transform": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "rotate(270deg)"
+                    },
+                    {
+                      "input": false,
+                      "output": "rotate(0deg)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[2].style.transition": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "all 1s ease-in"
+                    },
+                    {
+                      "input": false,
+                      "output": "all 2s ease-out"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[4].fill.paint": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "{view.params.colorOn}",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.elements[0].elements[4].style.opacity": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": 0,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": 0.3
+                    },
+                    {
+                      "input": false,
+                      "output": 0
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[5].fill.paint": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "{view.params.colorOff}",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.elements[0].elements[5].style.opacity": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": 0,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": 0.3
+                    },
+                    {
+                      "input": true,
+                      "output": 0
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "d": "M74.275 44.202h47.836v37.437H74.275z",
+                  "fill": {
+                    "paint": {
+                      "gradientTransform": "matrix(1 0 0 1.22086 -.101 -10.297)",
+                      "gradientUnits": "userSpaceOnUse",
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "style": {
+                            "stopColor": "#66666"
+                          }
+                        },
+                        {
+                          "offset": 0.5,
+                          "style": {
+                            "stopColor": "#f2f2f2"
+                          }
+                        },
+                        {
+                          "offset": 1,
+                          "style": {
+                            "stopColor": "#999999"
+                          }
+                        }
+                      ],
+                      "type": "linear",
+                      "x1": "97.67",
+                      "x2": "97.67",
+                      "y1": "75.256",
+                      "y2": "44.988"
+                    }
+                  },
+                  "name": "path",
+                  "type": "path"
+                },
+                {
+                  "cx": 74.417,
+                  "cy": "91.298",
+                  "fill": {
+                    "paint": {
+                      "cx": "74.417",
+                      "cy": "91.298",
+                      "fx": "74.417",
+                      "fy": "91.298",
+                      "gradientUnits": "userSpaceOnUse",
+                      "r": "47.027",
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "style": {
+                            "stopColor": "#e6e6e6"
+                          }
+                        },
+                        {
+                          "offset": 0.15,
+                          "style": {
+                            "stopColor": "#b3b3b3"
+                          }
+                        },
+                        {
+                          "offset": 0.17,
+                          "style": {
+                            "stopColor": "#8c8c8c"
+                          }
+                        },
+                        {
+                          "offset": 0.52,
+                          "style": {
+                            "stopColor": "#666666"
+                          }
+                        },
+                        {
+                          "offset": 0.54,
+                          "style": {
+                            "stopColor": "#b3b3b3"
+                          }
+                        },
+                        {
+                          "offset": 0.79,
+                          "style": {
+                            "stopColor": "#f9f9f9"
+                          }
+                        },
+                        {
+                          "offset": 1,
+                          "style": {
+                            "stopColor": "#999999"
+                          }
+                        }
+                      ],
+                      "type": "radial"
+                    }
+                  },
+                  "name": "circle",
+                  "r": "47.027",
+                  "type": "circle"
+                },
+                {
+                  "d": "M64.052 79.172c-2.045-2.486-3.387-5.053-3.013-7.225.212-1.236 2.046-2.241 2.079-1.202.08 2.51-.26 4.892 1.516 7.938 1.475 2.528 3.806 5.058 4.784 6.035-.755-.703-3.743-3.572-5.366-5.546zm9.028-3.388c-.158-3.178.315-6.052 1.835-7.61.85-.872 2.934-.721 2.367.186-1.322 2.115-3.01 3.945-3.381 7.402-.325 3.011.078 6.21.453 7.745-.417-1.424-1.13-4.843-1.274-7.723zm9.777 2.231c1.6-2.726 3.548-4.864 5.68-5.293 1.173-.236 2.878 1.08 1.868 1.501-2.318.968-4.669 1.52-6.876 4.201-1.893 2.302-3.333 5.213-3.927 6.606.474-1.237 1.862-4.64 3.255-7.015zm6.137 7.167c2.96-1.122 5.805-1.558 7.746-.566 1.087.555 1.558 2.591.529 2.315-2.419-.65-4.619-1.705-8.014-1.004-2.902.599-5.885 1.966-7.21 2.715 1.157-.717 4.37-2.483 6.949-3.46zm.641 9.989c3.106.697 5.754 1.924 6.838 3.801.607 1.052-.112 3.018-.825 2.226-1.66-1.842-2.966-3.946-6.202-5.23-2.823-1.12-5.997-1.58-7.555-1.638 1.458-.01 4.922.207 7.744.84zm-4.764 8.427c1.046 1.196 1.93 2.415 2.52 3.657.586 1.232.847 2.423.698 3.468-.17 1.183-1.989 2.295-2.05 1.262-.149-2.509.12-4.9-1.753-7.9-1.553-2.486-3.973-4.961-4.965-5.902.467.413 1.458 1.325 2.25 2.069 1 .947 2.234 2.127 3.3 3.346zm-8.912 3.61c.235 3.172-.169 6.054-1.651 7.649-.83.892-2.916.792-2.37-.129 1.27-2.147 2.913-4.014 3.202-7.478.252-3.015-.227-6.206-.636-7.731.447 1.412 1.242 4.82 1.455 7.69zm-9.843-2.003c-1.528 2.77-3.422 4.958-5.538 5.445-1.168.269-2.897-.998-1.905-1.447 2.283-1.032 4.622-1.65 6.757-4.39 1.836-2.355 3.192-5.297 3.741-6.71-.437 1.266-1.716 4.675-3.055 7.102zm-6.348-6.985c-2.929 1.202-5.759 1.715-7.725.772-1.101-.527-1.622-2.552-.587-2.301 2.434.59 4.655 1.587 8.03.795 2.88-.675 5.834-2.124 7.134-2.898-1.125.732-4.314 2.591-6.852 3.632zm-.879-9.949c-3.123-.623-5.8-1.787-6.93-3.637-.633-1.037.036-3.02.769-2.246 1.707 1.8 3.066 3.875 6.332 5.08 2.85 1.053 6.036 1.436 7.598 1.454-1.463.05-4.928-.083-7.769-.65z",
+                  "name": "path",
+                  "stroke": {
+                    "linecap": "round",
+                    "opacity": 1,
+                    "paint": "#4d4d4d"
+                  },
+                  "style": {
+                    "transformOrigin": "74.417px 91.298px"
+                  },
+                  "type": "path"
+                },
+                {
+                  "d": "M121.582 42.696h4.973v40.449h-4.973z",
+                  "fill": {
+                    "paint": {
+                      "gradientTransform": "matrix(.10396 0 0 1.31908 113.85 -16.187)",
+                      "gradientUnits": "userSpaceOnUse",
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "style": {
+                            "stopColor": "#333333"
+                          }
+                        },
+                        {
+                          "offset": 0.5,
+                          "style": {
+                            "stopColor": "#cccccc"
+                          }
+                        },
+                        {
+                          "offset": 1,
+                          "style": {
+                            "stopColor": "#666666"
+                          }
+                        }
+                      ],
+                      "type": "linear",
+                      "x1": "97.67",
+                      "x2": "97.67",
+                      "y1": "75.256",
+                      "y2": "44.988"
+                    }
+                  },
+                  "name": "path",
+                  "type": "path"
+                },
+                {
+                  "d": "M121.582 42.696v1.506H74.275v.07A47.027 47.027 0 0027.39 91.296a47.027 47.027 0 0047.026 47.027 47.027 47.027 0 0047.027-47.027 47.027 47.027 0 00-1.002-9.658h1.141v1.506h4.973V42.696z",
+                  "fill": {},
+                  "name": "path",
+                  "style": {
+                    "transition": "opacity 0.5s ease-in"
+                  },
+                  "type": "path"
+                },
+                {
+                  "d": "M121.582 42.696v1.506H74.275v.07A47.027 47.027 0 0027.39 91.296a47.027 47.027 0 0047.026 47.027 47.027 47.027 0 0047.027-47.027 47.027 47.027 0 00-1.002-9.658h1.141v1.506h4.973V42.696z",
+                  "fill": {},
+                  "name": "path",
+                  "style": {
+                    "transition": "opacity 0.5s ease-in"
+                  },
+                  "type": "path"
+                }
+              ],
+              "name": "group",
+              "transform": "translate(-27.39 -42.696)",
+              "type": "group"
+            }
+          ],
+          "viewBox": "0 0 99.165 95.628"
+        },
+        "type": "ia.shapes.svg"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

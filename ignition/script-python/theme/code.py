@@ -21,7 +21,7 @@ def isValidParam(param):
 		'yellow',
 		'black',
 		'white',
-		'transparent',
+		'transparent'
 	]
 	paramParts = param.split()
 	color = paramParts[0]
@@ -61,4 +61,23 @@ def getVariable(param):
 			return '--%s' % (color,)
 		else:
 			return '--%s' % (param.replace(' ','-'),) + '-base'		
-	
+
+def getVariableOrColor(param, session):
+	if param in session.custom.framework.selectedSettings:
+		variable = session.custom.framework.variables[param]
+		return 'var(%s)' % (variable,)
+	else:
+		if isValidParam(param):
+			return 'var(%s)' % (getVariable(param),)
+		else:
+			return param
+
+def getBackgroundClassOrColor(param, session):
+	if param in session.custom.framework.selectedSettings:
+		variable = session.custom.framwork.classes.background[param]
+		return variable
+	else:
+		if isValidParam(param):
+			return getBackgroundClass(param)
+		else:
+			return param
