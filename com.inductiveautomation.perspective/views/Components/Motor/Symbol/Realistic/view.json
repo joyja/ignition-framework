@@ -3,8 +3,7 @@
   "params": {
     "colorOff": "equipmentOff",
     "colorOn": "equipmentOn",
-    "on": true,
-    "tagPath": "[default]MotorA"
+    "on": true
   },
   "propConfig": {
     "params.colorOff": {
@@ -16,10 +15,6 @@
       "persistent": true
     },
     "params.on": {
-      "paramDirection": "input",
-      "persistent": true
-    },
-    "params.tagPath": {
       "paramDirection": "input",
       "persistent": true
     }
