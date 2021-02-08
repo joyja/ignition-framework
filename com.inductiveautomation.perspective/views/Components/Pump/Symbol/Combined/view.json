@@ -1,0 +1,127 @@
+{
+  "custom": {},
+  "params": {
+    "colorOff": "equipmentOff",
+    "colorOn": "equipmentOn",
+    "dark": false,
+    "on": false,
+    "simple": false
+  },
+  "propConfig": {
+    "params.colorOff": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.colorOn": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.dark": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.on": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.simple": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 305,
+      "width": 316
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.colorOff": {
+            "binding": {
+              "config": {
+                "path": "view.params.colorOff"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.colorOn": {
+            "binding": {
+              "config": {
+                "path": "view.params.colorOn"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.on": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.simple"
+              },
+              "transforms": [
+                {
+                  "fallback": "Components/Pump/Symbol/Realistic",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "Components/Pump/Symbol/Realistic"
+                    },
+                    {
+                      "input": true,
+                      "output": "Components/Pump/Symbol/Simple"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "dark": false
+          },
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "custom": {
+      "colorOff": "equipmentOff",
+      "colorOn": "equipmentOn",
+      "dark": false,
+      "on": false
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}
