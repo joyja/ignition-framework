@@ -1,8 +1,4 @@
 {
-  "pages": {
-    "/": {
-      "viewPath": "test"
-    }
-  },
+  "pages": {},
   "sharedDocks": {}
 }
