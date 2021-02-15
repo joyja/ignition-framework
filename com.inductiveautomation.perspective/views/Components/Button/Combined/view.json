@@ -98,20 +98,8 @@
               },
               "transforms": [
                 {
-                  "fallback": null,
-                  "inputType": "scalar",
-                  "mappings": [
-                    {
-                      "input": true,
-                      "output": "Components/Button/One-Shot"
-                    },
-                    {
-                      "input": false,
-                      "output": "Components/Buttons/Basic"
-                    }
-                  ],
-                  "outputType": "scalar",
-                  "type": "map"
+                  "code": "\tif value:\n\t\tsubComponent \u003d \"One-Shot\"\n\telse:\n\t\tsubComponent \u003d \"Basic\"\n\treturn \"/\".join(self.view.id.split(\"/\")[:-1]) + \"/\" + subComponent ",
+                  "type": "script"
                 }
               ],
               "type": "property"

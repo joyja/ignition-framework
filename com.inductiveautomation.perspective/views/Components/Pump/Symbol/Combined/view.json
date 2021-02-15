@@ -76,20 +76,8 @@
               },
               "transforms": [
                 {
-                  "fallback": "Components/Pump/Symbol/Realistic",
-                  "inputType": "scalar",
-                  "mappings": [
-                    {
-                      "input": false,
-                      "output": "Components/Pump/Symbol/Realistic"
-                    },
-                    {
-                      "input": true,
-                      "output": "Components/Pump/Symbol/Simple"
-                    }
-                  ],
-                  "outputType": "scalar",
-                  "type": "map"
+                  "code": "\tif value:\n\t\tsubComponent \u003d \"Simple\"\n\telse:\n\t\tsubComponent \u003d \"Realistic\"\n\treturn \"/\".join(self.view.id.split(\"/\")[:-1]) + \"/\" + subComponent ",
+                  "type": "script"
                 }
               ],
               "type": "property"
