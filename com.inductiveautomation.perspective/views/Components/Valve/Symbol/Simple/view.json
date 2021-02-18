@@ -1,0 +1,273 @@
+{
+  "custom": {},
+  "params": {
+    "colorOff": "silver",
+    "colorOn": "white",
+    "on": false,
+    "onToClose": false
+  },
+  "propConfig": {
+    "params.colorOff": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.colorOn": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.on": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.onToClose": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 969,
+      "width": 1474
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "valve-hphmi"
+        },
+        "position": {
+          "height": "100%",
+          "width": "100%"
+        },
+        "propConfig": {
+          "props.elements[0].elements[0].fill.paint": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "if({view.params.on},{view.params.colorOn},{view.params.colorOff})",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.elements[0].elements[0].stroke.paint": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": "red",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "black"
+                    },
+                    {
+                      "input": false,
+                      "output": "grey"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[1].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": "red",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "black"
+                    },
+                    {
+                      "input": false,
+                      "output": "grey"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[1].text": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "on": "{view.params.on}",
+                  "onToClose": "{view.params.onToClose}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tif value[\u0027onToClose\u0027]:\n\t\treturn \u0027closed\u0027 if value[\u0027on\u0027] else \u0027open\u0027\n\telse:\n\t\treturn \u0027open\u0027 if value[\u0027on\u0027] else \u0027closed\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.elements[0].elements[2].fill.paint": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "if({view.params.on},{view.params.colorOn},{view.params.colorOff})",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.elements[0].elements[2].stroke.paint": {
+            "binding": {
+              "config": {
+                "path": "view.params.on"
+              },
+              "transforms": [
+                {
+                  "fallback": "red",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "black"
+                    },
+                    {
+                      "input": false,
+                      "output": "grey"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[0].elements[2].style.transform": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "on": "{view.params.on}",
+                  "onToClose": "{view.params.onToClose}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tif value[\u0027onToClose\u0027]:\n\t\treturn 90 if value[\u0027on\u0027] else 0\n\telse:\n\t\treturn 0 if value[\u0027on\u0027] else 90",
+                  "type": "script"
+                },
+                {
+                  "expression": "\u0027rotate(\u0027+{value}+\u0027deg)\u0027",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "d": "M 95.407238,78.137713 74.240849,67.659334 A 30715.113,30715.113 26.333887 0 0 70.655952,65.884929 L 49.489795,55.410098 a 1.2417408,1.2417408 148.16508 0 0 -1.792506,1.112914 v 20.50202 24.498008 a 1.2417409,1.2417409 31.834925 0 0 1.792506,1.11291 L 70.655952,92.161126 95.407123,79.912118 a 4.0409527,4.0409527 0.00215365 0 1 3.584945,1.35e-4 l 21.161612,10.474566 a 53036.229,53036.229 26.33231 0 0 3.58495,1.774307 l 21.16615,10.474824 a 1.241741,1.241741 148.16507 0 0 1.79251,-1.11291 V 81.025032 56.523012 a 1.2417408,1.2417408 31.834922 0 0 -1.79251,-1.112914 l -21.16615,10.474831 a 19470.727,19470.727 153.66396 0 0 -3.58483,1.77454 L 98.991953,78.137578 a 4.0396305,4.0396305 179.99785 0 1 -3.584715,1.35e-4 z",
+                  "fill": {
+                    "opacity": "1"
+                  },
+                  "name": "path978",
+                  "stroke": {
+                    "dasharray": "none",
+                    "linecap": "round",
+                    "miterlimit": "4",
+                    "width": 2
+                  },
+                  "style": {
+                    "transition": "all .3s ease-in"
+                  },
+                  "type": "path"
+                },
+                {
+                  "fill": {},
+                  "name": "text1690",
+                  "style": {
+                    "classes": "typo/font/oswald",
+                    "textAnchor": "middle"
+                  },
+                  "type": "text",
+                  "x": 97,
+                  "y": 55
+                },
+                {
+                  "d": "m 95.205232,69.760672 c -1.388093,0.194442 -2.721028,0.589981 -3.933645,1.166957 -0.996254,0.474028 -2.535614,1.388754 -3.532862,1.863695 l -3.746658,1.784349 a 17921.103,17921.103 154.54021 0 1 -3.611548,1.71951 l -3.924706,1.868072 a 0.95236173,0.95236173 90.009504 0 0 -2.85e-4,1.719706 l 3.925276,1.869939 a 17311.456,17311.456 25.479019 0 1 3.610971,1.720723 l 3.747242,1.786189 c 0.997087,0.47528 2.536814,1.389582 3.533473,1.862761 1.212609,0.575704 2.545185,0.970088 3.93266,1.163573 1.093104,0.152435 2.894199,0.151875 3.987207,-0.0013 1.384273,-0.193935 2.713703,-0.587866 3.923673,-1.162318 0.99666,-0.473179 2.53651,-1.387222 3.53375,-1.862183 l 3.75275,-1.787343 a 45349.823,45349.823 154.53014 0 0 3.61125,-1.720145 l 3.92527,-1.869941 a 0.95236123,0.95236123 89.990496 0 0 -2.8e-4,-1.719705 l -3.92471,-1.868072 a 17972.49,17972.49 25.459757 0 1 -3.61155,-1.719508 l -3.74667,-1.784353 c -0.99725,-0.47494 -2.53661,-1.389666 -3.53287,-1.863694 -1.21173,-0.576557 -2.54362,-0.971944 -3.930641,-1.166537 -1.092978,-0.153339 -2.894086,-0.153526 -3.987097,-4.19e-4 z",
+                  "fill": {
+                    "opacity": "1"
+                  },
+                  "name": "path916",
+                  "stroke": {
+                    "dasharray": "none",
+                    "linecap": "round",
+                    "miterlimit": "4",
+                    "width": 2
+                  },
+                  "style": {
+                    "transformOrigin": "97.2% 105.3%",
+                    "transition": "all .3s ease-in"
+                  },
+                  "type": "path"
+                }
+              ],
+              "name": "layer1",
+              "transform": "translate(-47.197289,-41.523026)",
+              "type": "group"
+            }
+          ],
+          "style": {
+            "overflow": "visible"
+          },
+          "viewBox": "0 0 100 75"
+        },
+        "type": "ia.shapes.svg"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

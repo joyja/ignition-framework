@@ -1,43 +1,38 @@
 {
   "custom": {},
   "params": {
-    "color": "primary",
-    "disabled": false,
-    "label": "Button",
-    "labelWriting": "Writing...",
-    "oneShot": false,
-    "tagPath": "[default]VFDA/autoReq"
+    "colorOff": "equipmentOff",
+    "colorOn": "equipmentOn",
+    "on": false,
+    "onToClose": false,
+    "simple": true
   },
   "propConfig": {
-    "params.color": {
+    "params.colorOff": {
       "paramDirection": "input",
       "persistent": true
     },
-    "params.disabled": {
+    "params.colorOn": {
       "paramDirection": "input",
       "persistent": true
     },
-    "params.label": {
+    "params.on": {
       "paramDirection": "input",
       "persistent": true
     },
-    "params.labelWriting": {
+    "params.onToClose": {
       "paramDirection": "input",
       "persistent": true
     },
-    "params.oneShot": {
-      "paramDirection": "input",
-      "persistent": true
-    },
-    "params.tagPath": {
+    "params.simple": {
       "paramDirection": "input",
       "persistent": true
     }
   },
   "props": {
     "defaultSize": {
-      "height": 52,
-      "width": 250
+      "height": 305,
+      "width": 316
     }
   },
   "root": {
@@ -47,46 +42,37 @@
           "name": "EmbeddedView"
         },
         "position": {
-          "basis": "320px",
           "grow": 1
         },
         "propConfig": {
-          "props.params.color": {
+          "props.params.colorOff": {
             "binding": {
               "config": {
-                "path": "view.params.color"
+                "path": "view.params.colorOff"
               },
               "type": "property"
             }
           },
-          "props.params.disabled": {
+          "props.params.colorOn": {
             "binding": {
               "config": {
-                "path": "view.params.disabled"
+                "path": "view.params.colorOn"
               },
               "type": "property"
             }
           },
-          "props.params.label": {
+          "props.params.on": {
             "binding": {
               "config": {
-                "path": "view.params.label"
+                "path": "view.params.on"
               },
               "type": "property"
             }
           },
-          "props.params.labelWriting": {
+          "props.params.onToClose": {
             "binding": {
               "config": {
-                "path": "view.params.labelWriting"
-              },
-              "type": "property"
-            }
-          },
-          "props.params.tagPath": {
-            "binding": {
-              "config": {
-                "path": "view.params.tagPath"
+                "path": "view.params.onToClose"
               },
               "type": "property"
             }
@@ -94,11 +80,11 @@
           "props.path": {
             "binding": {
               "config": {
-                "path": "view.params.oneShot"
+                "path": "view.params.simple"
               },
               "transforms": [
                 {
-                  "code": "\tif value:\n\t\tsubComponent \u003d \"One-Shot\"\n\telse:\n\t\tsubComponent \u003d \"Basic\"\n\treturn \"/\".join(self.view.id.split(\"/\")[:-1]) + \"/\" + subComponent ",
+                  "code": "\tif value:\n\t\tsubComponent \u003d \"Simple\"\n\telse:\n\t\tsubComponent \u003d \"Realistic\"\n\treturn \"/\".join(self.view.id.split(\"/\")[:-1]) + \"/\" + subComponent ",
                   "type": "script"
                 }
               ],
@@ -106,9 +92,23 @@
             }
           }
         },
+        "props": {
+          "params": {
+            "dark": false
+          },
+          "style": {
+            "overflow": "visible"
+          }
+        },
         "type": "ia.display.view"
       }
     ],
+    "custom": {
+      "colorOff": "equipmentOff",
+      "colorOn": "equipmentOn",
+      "dark": false,
+      "on": false
+    },
     "meta": {
       "name": "root"
     },

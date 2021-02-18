@@ -2,7 +2,7 @@
   "custom": {},
   "params": {
     "color": "primary",
-    "discrete": true,
+    "discrete": false,
     "discreteOffLabel": "Off",
     "discreteOnLabel": "On",
     "duration": 10,
@@ -11,6 +11,8 @@
     "min": 0,
     "rounded": "pill",
     "secondaryColor": "background",
+    "showDuration": true,
+    "showLabel": true,
     "tags": [
       {
         "aggregate": "MinMax",
@@ -60,6 +62,14 @@
       "paramDirection": "input",
       "persistent": true
     },
+    "params.showDuration": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.showLabel": {
+      "paramDirection": "input",
+      "persistent": true
+    },
     "params.tags": {
       "paramDirection": "input",
       "persistent": true
@@ -67,7 +77,7 @@
   },
   "props": {
     "defaultSize": {
-      "height": 67,
+      "height": 59,
       "width": 385
     }
   },
@@ -95,7 +105,9 @@
                   }
                 },
                 "props": {
+                  "alignVertical": "top",
                   "style": {
+                    "classes": "util/pt-1",
                     "fontFamily": "Oswald",
                     "fontSize": "10px",
                     "textAlign": "right",
@@ -122,7 +134,9 @@
                   }
                 },
                 "props": {
+                  "alignVertical": "bottom",
                   "style": {
+                    "classes": "util/pb-1",
                     "fontFamily": "Oswald",
                     "fontSize": "10px",
                     "textAlign": "right",
@@ -143,9 +157,19 @@
               "position.display": {
                 "binding": {
                   "config": {
-                    "path": "view.params.discrete"
+                    "struct": {
+                      "discrete": "{view.params.discrete}",
+                      "show": "{view.params.showLabel}"
+                    },
+                    "waitOnAll": true
                   },
-                  "type": "property"
+                  "transforms": [
+                    {
+                      "code": "\treturn value[\u0027discrete\u0027] and value[\u0027show\u0027]",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
                 }
               }
             },
@@ -161,7 +185,7 @@
                   "name": "Label"
                 },
                 "position": {
-                  "basis": "150px"
+                  "grow": 1
                 },
                 "propConfig": {
                   "props.text": {
@@ -195,15 +219,19 @@
               "position.display": {
                 "binding": {
                   "config": {
-                    "path": "view.params.discrete"
+                    "struct": {
+                      "discrete": "{view.params.discrete}",
+                      "show": "{view.params.showLabel}"
+                    },
+                    "waitOnAll": true
                   },
                   "transforms": [
                     {
-                      "expression": "!{value}",
-                      "type": "expression"
+                      "code": "\treturn not value[\u0027discrete\u0027] and value[\u0027show\u0027]",
+                      "type": "script"
                     }
                   ],
-                  "type": "property"
+                  "type": "expr-struct"
                 }
               }
             },
@@ -338,6 +366,14 @@
               "shrink": 0
             },
             "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.showDuration"
+                  },
+                  "type": "property"
+                }
+              },
               "props.text": {
                 "binding": {
                   "config": {

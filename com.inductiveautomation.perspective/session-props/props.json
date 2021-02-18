@@ -19,7 +19,7 @@
           "background": "blue-grey lighten-4",
           "equipmentAuto": "white",
           "equipmentManual": "deep-orange lighten-3",
-          "equipmentOff": "red",
+          "equipmentOff": "transparent",
           "equipmentOn": "cyan",
           "error": "red accent-2",
           "header": "blue-grey darken-4",
