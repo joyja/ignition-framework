@@ -3,8 +3,8 @@
   "params": {
     "colorOff": "equipmentOff",
     "colorOn": "equipmentOn",
+    "direction": "lt",
     "on": false,
-    "onToClose": false,
     "simple": false
   },
   "propConfig": {
@@ -16,11 +16,11 @@
       "paramDirection": "input",
       "persistent": true
     },
-    "params.on": {
+    "params.direction": {
       "paramDirection": "input",
       "persistent": true
     },
-    "params.onToClose": {
+    "params.on": {
       "paramDirection": "input",
       "persistent": true
     },
@@ -29,12 +29,7 @@
       "persistent": true
     }
   },
-  "props": {
-    "defaultSize": {
-      "height": 305,
-      "width": 316
-    }
-  },
+  "props": {},
   "root": {
     "children": [
       {
@@ -61,18 +56,18 @@
               "type": "property"
             }
           },
-          "props.params.on": {
+          "props.params.direction": {
             "binding": {
               "config": {
-                "path": "view.params.on"
+                "path": "view.params.direction"
               },
               "type": "property"
             }
           },
-          "props.params.onToClose": {
+          "props.params.on": {
             "binding": {
               "config": {
-                "path": "view.params.onToClose"
+                "path": "view.params.on"
               },
               "type": "property"
             }
@@ -92,31 +87,14 @@
             }
           }
         },
-        "props": {
-          "params": {
-            "dark": false
-          },
-          "style": {
-            "overflow": "visible"
-          }
-        },
         "type": "ia.display.view"
       }
     ],
-    "custom": {
-      "colorOff": "equipmentOff",
-      "colorOn": "equipmentOn",
-      "dark": false,
-      "on": false
-    },
     "meta": {
       "name": "root"
     },
     "props": {
-      "direction": "column",
-      "style": {
-        "overflow": "visible"
-      }
+      "direction": "column"
     },
     "type": "ia.container.flex"
   }

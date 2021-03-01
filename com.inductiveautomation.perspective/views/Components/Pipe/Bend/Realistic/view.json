@@ -1,0 +1,171 @@
+{
+  "custom": {},
+  "params": {
+    "colorOff": "equipmentOff",
+    "colorOn": "equipmentOn",
+    "direction": "lt",
+    "on": false
+  },
+  "propConfig": {
+    "params.colorOff": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.colorOn": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.direction": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.on": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "pipe-bend"
+        },
+        "position": {
+          "height": "100%",
+          "width": "100%"
+        },
+        "propConfig": {
+          "props.elements[1].fill.paint": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "color": "if({view.params.on},{view.params.colorOn},{view.params.colorOff})",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.style.transform": {
+            "binding": {
+              "config": {
+                "path": "view.params.direction"
+              },
+              "transforms": [
+                {
+                  "fallback": 0,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": "lt",
+                      "output": 0
+                    },
+                    {
+                      "input": "tl",
+                      "output": 0
+                    },
+                    {
+                      "input": "lb",
+                      "output": 270
+                    },
+                    {
+                      "input": "bl",
+                      "output": 270
+                    },
+                    {
+                      "input": "rt",
+                      "output": 90
+                    },
+                    {
+                      "input": "tr",
+                      "output": 90
+                    },
+                    {
+                      "input": "rb",
+                      "output": 180
+                    },
+                    {
+                      "input": "br",
+                      "output": 180
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                },
+                {
+                  "expression": "\u0027rotate(\u0027+{value}+\u0027deg)\u0027",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "d": "M100 0A100 100 0 010 100V0z",
+              "fill": {
+                "paint": {
+                  "cx": -0.5,
+                  "cy": -0.5,
+                  "fx": 0,
+                  "fy": 0,
+                  "gradientUnits": "userSpaceOnUse",
+                  "r": 100,
+                  "stops": [
+                    {
+                      "offset": "0%",
+                      "stopColor": "#999999"
+                    },
+                    {
+                      "offset": "50%",
+                      "stopColor": "#f2f2f2"
+                    },
+                    {
+                      "offset": "100%",
+                      "stopColor": "#999999"
+                    }
+                  ],
+                  "type": "radial"
+                }
+              },
+              "name": "path",
+              "style": {},
+              "type": "path"
+            },
+            {
+              "d": "M100 0A100 100 0 010 100V0z",
+              "fill": {
+                "opacity": 0.3
+              },
+              "name": "path",
+              "style": {
+                "transition": "all .3s ease-in"
+              },
+              "type": "path"
+            }
+          ],
+          "preserveAspectRatio": "none",
+          "style": {
+            "transition": "transform .3s ease-in"
+          },
+          "viewBox": "0 0 100 100"
+        },
+        "type": "ia.shapes.svg"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}
