@@ -1,8 +1,8 @@
 {
   "custom": {},
   "params": {
-    "colorOff": "value",
-    "colorOn": "value",
+    "colorOff": "grey lighten-1",
+    "colorOn": "white",
     "on": false
   },
   "propConfig": {
@@ -44,27 +44,19 @@
           "props.elements[0].fill.paint": {
             "binding": {
               "config": {
-                "path": "view.params.on"
+                "struct": {
+                  "color": "if({view.params.on},{view.params.colorOn},{view.params.colorOff})",
+                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                },
+                "waitOnAll": true
               },
               "transforms": [
                 {
-                  "fallback": "red",
-                  "inputType": "scalar",
-                  "mappings": [
-                    {
-                      "input": true,
-                      "output": "white"
-                    },
-                    {
-                      "input": false,
-                      "output": "silver"
-                    }
-                  ],
-                  "outputType": "scalar",
-                  "type": "map"
+                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "type": "script"
                 }
               ],
-              "type": "property"
+              "type": "expr-struct"
             }
           },
           "props.elements[0].stroke.paint": {
