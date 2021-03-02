@@ -40,4 +40,6 @@ Move the fonts/Oswald, fonts/Basic, and fonts/Lobster folders to the fonts direc
 - Linux: `/usr/local/bin/ignition/data/modules/com.inductiveautomation.perspective/fonts`
 - Windows: `c:\Program Files\Inductive Automation\Ignition\data\modules\com.inductiveautomation.persepective\fonts`
 
+Also upload the images in the image folder using Image Management in your Ignition Designer. Don't put the images in any folders, just upload them to the root directory.
+
 Then restart your Ignition Gateway and the project will be registered by Ignition.
