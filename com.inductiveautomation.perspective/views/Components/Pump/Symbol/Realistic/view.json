@@ -3,7 +3,7 @@
   "params": {
     "colorOff": "equipmentOff",
     "colorOn": "equipmentOn",
-    "on": true
+    "on": false
   },
   "propConfig": {
     "params.colorOff": {
@@ -113,14 +113,14 @@
             "binding": {
               "config": {
                 "struct": {
-                  "color": "{view.params.colorOn}",
-                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                  "color": "if({view.params.on},{view.params.colorOn},{view.params.colorOff})",
+                  "variables": "{session.custom.framework.variables}"
                 },
                 "waitOnAll": true
               },
               "transforms": [
                 {
-                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]],)\n\texcept:\n\t\treturn value[\u0027color\u0027]\n#\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
                   "type": "script"
                 }
               ],
@@ -132,6 +132,7 @@
               "config": {
                 "path": "view.params.on"
               },
+              "enabled": false,
               "transforms": [
                 {
                   "fallback": 0,
@@ -158,10 +159,12 @@
               "config": {
                 "struct": {
                   "color": "{view.params.colorOff}",
-                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                  "selectedSettings": "{session.custom.framework.selectedSettings}",
+                  "variables": "{session.custom.framework.variables}"
                 },
                 "waitOnAll": true
               },
+              "enabled": false,
               "transforms": [
                 {
                   "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
@@ -176,6 +179,7 @@
               "config": {
                 "path": "view.params.on"
               },
+              "enabled": false,
               "transforms": [
                 {
                   "fallback": 0,
@@ -354,15 +358,19 @@
                   "fill": {},
                   "name": "path",
                   "style": {
-                    "transition": "opacity 0.5s ease-in"
+                    "opacity": 0.3,
+                    "transition": "all 0.5s ease-in"
                   },
                   "type": "path"
                 },
                 {
                   "d": "M121.582 42.696v1.506H74.275v.07A47.027 47.027 0 0027.39 91.296a47.027 47.027 0 0047.026 47.027 47.027 47.027 0 0047.027-47.027 47.027 47.027 0 00-1.002-9.658h1.141v1.506h4.973V42.696z",
-                  "fill": {},
+                  "fill": {
+                    "paint": "var(--transparent)"
+                  },
                   "name": "path",
                   "style": {
+                    "opacity": 0,
                     "transition": "opacity 0.5s ease-in"
                   },
                   "type": "path"

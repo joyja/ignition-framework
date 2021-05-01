@@ -23,13 +23,13 @@
         "config": {
           "struct": {
             "color": "{view.params.color}",
-            "selectedTheme": "{session.custom.framework.selectedTheme}"
+            "variables": "{session.custom.framework.variables}"
           },
           "waitOnAll": true
         },
         "transforms": [
           {
-            "code": "\tif value[\u0027color\u0027] in self.session.custom.framework.selectedSettings:\n\t\tvariable \u003d self.session.custom.framework.variables[value[\u0027color\u0027]]\n\t\treturn \u0027var(%s)\u0027 % (variable,)\n\telse:\n\t\tif theme.isValidParam(value[\u0027color\u0027]):\n\t\t\treturn \u0027var(%s)\u0027 % (theme.getVariable(value[\u0027color\u0027]),)\n\t\telse:\n\t\t\treturn value[\u0027color\u0027]",
+            "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]],)\n\texcept:\n\t\treturn value[\u0027color\u0027]",
             "type": "script"
           }
         ],
@@ -42,13 +42,13 @@
         "config": {
           "struct": {
             "color": "{view.params.secondaryColor}",
-            "selectedTheme": "{session.custom.framework.selectedTheme}"
+            "variables": "{session.custom.framework.variables}"
           },
           "waitOnAll": true
         },
         "transforms": [
           {
-            "code": "\tif value[\u0027color\u0027] in self.session.custom.framework.selectedSettings:\n\t\tvariable \u003d self.session.custom.framework.variables[value[\u0027color\u0027]]\n\t\treturn \u0027var(%s)\u0027 % (variable,)\n\telse:\n\t\tif theme.isValidParam(value[\u0027color\u0027]):\n\t\t\treturn \u0027var(%s)\u0027 % (theme.getVariable(value[\u0027color\u0027]),)\n\t\telse:\n\t\t\treturn value[\u0027color\u0027]",
+            "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]],)\n\texcept:\n\t\treturn value[\u0027color\u0027]",
             "type": "script"
           }
         ],

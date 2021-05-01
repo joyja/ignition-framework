@@ -1,0 +1,373 @@
+{
+  "custom": {
+    "expand": false
+  },
+  "params": {
+    "content": {
+      "height": "600px",
+      "params": {},
+      "view": "Components/Expansion Panel/Test/Content"
+    },
+    "elevation": 2,
+    "first": false,
+    "header": {
+      "params": {},
+      "view": "Components/Expansion Panel/Test/Header"
+    },
+    "index": 0,
+    "last": false,
+    "parentId": 123
+  },
+  "propConfig": {
+    "custom.expand": {
+      "persistent": true
+    },
+    "params.content": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.elevation": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.first": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.header": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.index": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.last": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.parentId": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 444
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EmbeddedView"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.header.params"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.header.view"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "util/mr-3",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "30px"
+                },
+                "propConfig": {
+                  "props.style.transform": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.expand"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": null,
+                          "inputType": "scalar",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "rotate(180deg)"
+                            },
+                            {
+                              "input": false,
+                              "output": "rotate(0deg)"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "color": "black",
+                  "path": "material/expand_more",
+                  "style": {
+                    "backgroundColor": "transparent",
+                    "border": "none",
+                    "boxShadow": "none",
+                    "classes": "",
+                    "color": "black",
+                    "overflow": "visible",
+                    "transition": "transform 0.25s ease-in"
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tpayload \u003d {\n\t\t\u0027id\u0027: self.view.params.parentId,\n\t\t\u0027index\u0027: self.view.params.index,\n\t\t\u0027value\u0027: not self.view.custom.expand\n\t}\n\tsystem.perspective.sendMessage(\u0027reveal\u0027, payload, \u0027page\u0027)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "util/ma-3",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EmbeddedView"
+            },
+            "position": {
+              "basis": "320px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.content.params"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.content.view"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "position.basis": {
+            "binding": {
+              "config": {
+                "path": "view.custom.expand"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value},{view.params.content.height},\u00270px\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.opacity": {
+            "binding": {
+              "config": {
+                "path": "view.custom.expand"
+              },
+              "transforms": [
+                {
+                  "fallback": "0px",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "1"
+                    },
+                    {
+                      "input": false,
+                      "output": "0"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.overflow": {
+            "binding": {
+              "config": {
+                "path": "view.custom.expand"
+              },
+              "transforms": [
+                {
+                  "fallback": "hidden",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "auto"
+                    },
+                    {
+                      "input": false,
+                      "output": "hidden"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "transition": "all .3s ease-out"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.borderBottomWidth": {
+        "binding": {
+          "config": {
+            "struct": {
+              "expand": "{view.custom.expand}",
+              "first": "{view.params.first}",
+              "last": "{view.params.last}"
+            },
+            "waitOnAll": true
+          },
+          "transforms": [
+            {
+              "code": "\tif value.expand:\n\t\treturn \"0px\"\n\telif value.first:\n\t\treturn \"1px\"\n\telif value.last:\n\t\treturn \"0px\"\n\telse:\n\t\treturn \"1px\"",
+              "type": "script"
+            }
+          ],
+          "type": "expr-struct"
+        }
+      },
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "struct": {
+              "elevation": "{view.params.elevation}",
+              "expand": "{view.custom.expand}",
+              "first": "{view.params.first}",
+              "last": "{view.params.last}"
+            },
+            "waitOnAll": true
+          },
+          "transforms": [
+            {
+              "code": "\tif value.expand:\n\t\treturn \"util/elevation-%d rounded/md util/elevation-3 util/my-3\" % (value[\u0027elevation\u0027],)\n\telif value.first:\n\t\treturn \"util/elevation-%d rounded/t/md\" % (value[\u0027elevation\u0027],)\n\telif value.last:\n\t\treturn \"util/box-shadow/no-top-%d rounded/b/md\" % (value[\u0027elevation\u0027],)\n\telse:\n\t\treturn \"util/box-shadow/no-top-%d\" % (value[\u0027elevation\u0027],)",
+              "type": "script"
+            }
+          ],
+          "type": "expr-struct"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "white",
+        "borderBottomColor": "gainsboro",
+        "borderBottomStyle": "solid",
+        "overflow": "visible",
+        "transition": "all .3s ease-out"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "reveal",
+          "pageScope": true,
+          "script": "\tif payload[\u0027id\u0027] \u003d\u003d self.view.params.parentId:\n\t\tif payload[\u0027index\u0027] !\u003d self.view.params.index:\n\t\t\tself.view.custom.expand \u003d False\n\t\telse:\n\t\t\tself.view.custom.expand \u003d payload[\u0027value\u0027]",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

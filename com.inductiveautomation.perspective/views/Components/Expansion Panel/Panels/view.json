@@ -1,0 +1,183 @@
+{
+  "custom": {},
+  "params": {
+    "defaultContentHeight": "300px",
+    "elevation": 2,
+    "id": 123,
+    "items": [
+      {
+        "content": {
+          "params": {},
+          "view": "Components/Expansion Panel/Test/Content"
+        },
+        "header": {
+          "params": {
+            "line1": "Pump 1",
+            "line2": "The best pump",
+            "line3": "Auto, Running",
+            "on": true,
+            "view": "Components/Pump/Symbol/Combined"
+          },
+          "view": "Components/Expansion Panel/Test/Header"
+        }
+      },
+      {
+        "content": {
+          "params": {},
+          "view": "Components/Expansion Panel/Test/Content"
+        },
+        "header": {
+          "params": {
+            "line1": "Pump 2",
+            "line2": "The second best pump",
+            "line3": "Auto, Stopped",
+            "on": false,
+            "view": "Components/Pump/Symbol/Combined"
+          },
+          "view": "Components/Expansion Panel/Test/Header"
+        }
+      },
+      {
+        "content": {
+          "params": {},
+          "view": "Components/Expansion Panel/Test/Content"
+        },
+        "header": {
+          "params": {
+            "line1": "Valve 1",
+            "line2": "An important valve",
+            "line3": "Auto, Opened",
+            "on": true,
+            "view": "Components/Valve/Symbol/Combined"
+          },
+          "view": "Components/Expansion Panel/Test/Header"
+        }
+      },
+      {
+        "content": {
+          "params": {},
+          "view": "Components/Expansion Panel/Test/Content"
+        },
+        "header": {
+          "params": {
+            "line1": "Example Header",
+            "line2": "A not so important valve",
+            "line3": "Auto, Closed",
+            "on": false,
+            "view": "Components/Valve/Symbol/Combined"
+          },
+          "view": "Components/Expansion Panel/Test/Header"
+        }
+      }
+    ]
+  },
+  "propConfig": {
+    "params.defaultContentHeight": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.elevation": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.id": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.items": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 576
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.params.items"
+              },
+              "transforms": [
+                {
+                  "code": "\tinstances \u003d [dict(item) for item in value]\n\tinstances[0][\u0027first\u0027] \u003d True\n\tinstances[-1][\u0027last\u0027] \u003d True\n\tfor i, instance in enumerate(instances):\n\t\tinstance[\u0027index\u0027] \u003d i\n\t\tinstance[\u0027parentId\u0027] \u003d self.view.params.id\n\t\tif  \u0027height\u0027 not in instance[\u0027content\u0027]:\n\t\t\tinstance[\u0027content\u0027] \u003d dict(instance[\u0027content\u0027])\n\t\t\tinstance[\u0027content\u0027][\u0027height\u0027] \u003d self.view.params.defaultContentHeight\n\treturn instances",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.props.loading.mode"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \"/\".join(self.view.id.split(\"/\")[:-1]) + \"/Panel\"",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "style": {
+            "overflow": "visible"
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "struct": {
+              "elevation": "{view.params.elevation}"
+            },
+            "waitOnAll": true
+          },
+          "enabled": false,
+          "transforms": [
+            {
+              "code": "\tclasses \u003d \u0027\u0027\n\tif (value[\u0027elevation\u0027]):\n\t\tclasses +\u003d \u0027elevation-%d\u0027 % (value[\u0027elevation\u0027],)\n\telse:\n\t\tclasses +\u003d \u0027elevation-3\u0027\n\treturn classes",
+              "type": "script"
+            }
+          ],
+          "type": "expr-struct"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

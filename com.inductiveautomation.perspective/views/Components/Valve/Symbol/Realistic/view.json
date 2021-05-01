@@ -62,13 +62,13 @@
               "config": {
                 "struct": {
                   "color": "if({view.params.on},{view.params.colorOn},{view.params.colorOff})",
-                  "selectedTheme": "{session.custom.framework.selectedTheme}"
+                  "variables": "{session.custom.framework.variables}"
                 },
                 "waitOnAll": true
               },
               "transforms": [
                 {
-                  "code": "\treturn theme.getVariableOrColor(value[\u0027color\u0027],self.session)",
+                  "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]],)\n\texcept:\n\t\treturn value[\u0027color\u0027]",
                   "type": "script"
                 }
               ],
