@@ -29,7 +29,7 @@
         },
         "transforms": [
           {
-            "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]],)\n\texcept:\n\t\treturn value[\u0027color\u0027]",
+            "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]].value,)\n\texcept:\n\t\treturn value[\u0027color\u0027]",
             "type": "script"
           }
         ],
@@ -48,7 +48,7 @@
         },
         "transforms": [
           {
-            "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]],)\n\texcept:\n\t\treturn value[\u0027color\u0027]",
+            "code": "\ttry:\n\t\treturn \u0027var(%s)\u0027 % (value[\u0027variables\u0027][value[\u0027color\u0027]].value,)\n\texcept:\n\t\treturn value[\u0027color\u0027]",
             "type": "script"
           }
         ],
