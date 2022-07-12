@@ -62,7 +62,7 @@
               },
               "transforms": [
                 {
-                  "code": "\tif value[\u0027disabled\u0027]:\n\t\tstyleClass \u003d \u0027components/button/disabled typo/font/oswald\u0027\n\telse:\n\t\tstyleClass\u003d \u0027copmonents/button/base typo/font/oswald \u0027\n\t\tif value[\u0027color\u0027] in [\u0027primary\u0027,\u0027secondary\u0027,\u0027accent\u0027,\u0027success\u0027,\u0027error\u0027,\u0027info\u0027,\u0027warning\u0027]:\n\t\t\tstyleClass +\u003d self.session.custom.framework.classes.background[value[\u0027color\u0027]]\n\t\telse:\n\t\t\tstyleClass +\u003d theme.getBackgroundClass(value[\u0027color\u0027])\n\treturn styleClass",
+                  "code": "\tif value[\u0027disabled\u0027]:\n\t\tstyleClass \u003d \u0027components/button/disabled typo/font/oswald\u0027\n\telse:\n\t\tstyleClass\u003d \u0027components/button/base typo/font/oswald \u0027\n\t\tif value[\u0027color\u0027] in [\u0027primary\u0027,\u0027secondary\u0027,\u0027accent\u0027,\u0027success\u0027,\u0027error\u0027,\u0027info\u0027,\u0027warning\u0027]:\n\t\t\tstyleClass +\u003d self.session.custom.framework.classes.background[value[\u0027color\u0027]]\n\t\telse:\n\t\t\tstyleClass +\u003d theme.getBackgroundClass(value[\u0027color\u0027])\n\treturn styleClass",
                   "type": "script"
                 }
               ],
