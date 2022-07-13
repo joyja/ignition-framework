@@ -74,7 +74,7 @@ def getVariableOrColor(param, session):
 
 def getBackgroundClassOrColor(param, session):
 	if param in session.custom.framework.selectedSettings:
-		variable = session.custom.framwork.classes.background[param]
+		variable = session.custom.framework.classes.background[param]
 		return variable
 	else:
 		if isValidParam(param):
